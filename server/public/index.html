@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/angular-route.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <script src="scripts/services/service.js"></script>
+    <script src="scripts/controllers/game-controller.js"></script>
+    <script src="scripts/controllers/send-controller.js"></script>
     <title>Games</title>
 </head>
 <body>
     <h1>Games App</h1>
+    <nav>
+        <a href= '/#!showGames'>Show Games</a>
+        <a href= '/#!sendGames'>Send Games</a>
+    </nav>
+    <main ng-view>
+
+    </main>
 </body>
 </html>
