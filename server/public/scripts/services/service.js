@@ -30,4 +30,12 @@ app.service('GameService', ['$http', function ($http) {
             console.log('error on post: ', error);
         })
     }
+
+    self.addVote = function (voteCount, id) {
+        let vote = voteCount + 1;
+        $http({
+            method:'PUT',
+            
+        })
+    }
 }])
