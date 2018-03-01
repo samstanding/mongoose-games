@@ -8,9 +8,11 @@ const mongoose = require('mongoose');
 //its to define what properties you want to have
 const GameSchema =  new mongoose.Schema(
     {
-        name: String,
+        name: {type: String, required: true},
         rating: {type: Number, default: 1 } ,
-        published: Date
+        published: Date,
+        dateAdded:{type: Date, default: Date()},
+        voteCount: {type: Number, default: 0}
     }
 );
 
@@ -68,6 +70,38 @@ router.put('/:id', (req, res) => {
         (error, updatedGame) => {
             if (error) {
                 console.log('error on add game:' , error);
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(200);
+            }
+        }
+    )
+})
+
+router.put('/vote/:id', (req, res) => {
+    const id = req.params.id;
+    const voteUpdate = req.body;
+    Game.findByIdAndUpdate (
+        {"_id": id },
+        {$set: {voteUpdate}},
+        (error, updatedGame) => {
+            if (error) {
+                console.log('error on vote count:' , error);
+                res.sendStatus(500);
+            } else {
+                res.sendStatus(200);
+            }
+        }
+    )
+})
+
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    Game.findByIdAndRemove( 
+        {"_id": id},
+        (error, updatedGame) => {
+            if (error) {
+                console.log('error on delete:' , error);
                 res.sendStatus(500);
             } else {
                 res.sendStatus(200);
