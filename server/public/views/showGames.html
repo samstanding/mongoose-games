@@ -1,4 +1,5 @@
 <ul ng-repeat="game in ac.gamesArray.list">
     <li> {{game}} </li>
     <button ng-click="ac.addVote(game.voteCount, game._id)">Up Vote Game!</button>
+    <button ng-click="ac.deleteGame(game._id)">Delete Game!</button>
 </ul>
