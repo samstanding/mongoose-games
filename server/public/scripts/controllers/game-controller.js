@@ -8,6 +8,8 @@ const appController = app.controller('AppController', ['GameService', function (
     self.addVote = GameService.addVote;
 
     self.deleteGame = GameService.deleteGame;
+
+    self.editGame = GameService.editGame;
     
     
 }]);

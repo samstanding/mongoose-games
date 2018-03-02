@@ -55,4 +55,16 @@ app.service('GameService', ['$http', function ($http) {
             console.log('error on vote: ', error);
         })
     }
+
+    self.editGame = function (game) {
+        $http({
+            method: 'PUT',
+            url:`/games/${game._id}`,
+            data: game
+        }).then(function (response) {
+            self.getGames();
+        }).catch(function (error) {
+            console.log('error on vote: ', error);
+        })
+    }
 }])

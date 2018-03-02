@@ -10,13 +10,24 @@
             <td>Edit</td>
         </tr>
         <tr ng-repeat="game in ac.gamesArray.list">
-            <td>{{game.name}} </td>
-            <td>{{game.published.toString(0,10)}} </td>
-            <td>{{game.rating}} </td>
+            <td> <div ng-hide="game.editing">
+                 {{game.name}}
+            </div> 
+            <input ng-show="game.editing" ng-model="game.name" ng-value="game.name"></td>
+            <td> <div ng-hide="game.editing">
+                    {{game.published}}
+            </div>
+            <input ng-show="game.editing" ng-model="game.published" ng-value="game.published"></td>
+            <td> <div ng-hide="game.editing">
+                    {{game.rating}}
+            </div> 
+            <input ng-show="game.editing" ng-model="game.rating" ng-value="game.rating"> </td>
             <td>{{game.voteCount}} </td>
             <td><button ng-click="ac.addVote(game.voteCount, game._id)">Up Vote Game!</button></td> 
             <td><button ng-click="ac.deleteGame(game._id)">Delete Game!</button> </td>
-            <td><button ng-click="ac.editGame(game._id)">Edit Game</button> </td>
+            <td><button ng-hide="game.editing" ng-click="game.editing=true">Edit Game</button>
+            <button ng-show="game.editing" ng-click="ac.editGame(game); game.editing=false">Submit</button>
+         </td>
     </thead>
 </table>
 
