@@ -4,7 +4,8 @@ const appController = app.controller('AppController', ['GameService', function (
     self.getGames();
     
     self.gamesArray = GameService.gamesArray;
-    
+
+    self.addVote = GameService.addVote;
     
     
 }]);

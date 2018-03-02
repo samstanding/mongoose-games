@@ -18,7 +18,6 @@ app.service('GameService', ['$http', function ($http) {
     }
 
     self.sendGame = function (newGame) {
-        console.log(newGame);
         $http({
             method: 'POST',
             url:'/games',
@@ -32,10 +31,17 @@ app.service('GameService', ['$http', function ($http) {
     }
 
     self.addVote = function (voteCount, id) {
+        console.log(voteCount, id);
         let vote = voteCount + 1;
         $http({
             method:'PUT',
-            
+            url: `/games/${id}`,
+            data: {voteCount: vote}
+        }).then(function (response) {
+            console.log('sent vote to db');
+            self.getGames();
+        }).catch(function (error) {
+            console.log('error on vote: ', error);
         })
     }
 }])

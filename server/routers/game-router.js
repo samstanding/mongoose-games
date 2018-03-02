@@ -42,7 +42,6 @@ router.get('/', (req, res) => {
             console.log('error:' , error);
             res.sendStatus(500);
         } else {
-            console.log(foundGames);
             res.send(foundGames);
         }
     });
@@ -81,6 +80,7 @@ router.put('/:id', (req, res) => {
 router.put('/vote/:id', (req, res) => {
     const id = req.params.id;
     const voteUpdate = req.body;
+    console.log(voteUpdate, id);
     Game.findByIdAndUpdate (
         {"_id": id },
         {$set: {voteUpdate}},
@@ -90,6 +90,8 @@ router.put('/vote/:id', (req, res) => {
                 res.sendStatus(500);
             } else {
                 res.sendStatus(200);
+                console.log('vote updated');
+                
             }
         }
     )
