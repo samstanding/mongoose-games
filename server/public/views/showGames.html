@@ -1,5 +1,23 @@
-<ul ng-repeat="game in ac.gamesArray.list">
-    <li> {{game}} </li>
-    <button ng-click="ac.addVote(game.voteCount, game._id)">Up Vote Game!</button>
-    <button ng-click="ac.deleteGame(game._id)">Delete Game!</button>
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Published Date</td>
+            <td>Rating</td>
+            <td>Vote Count</td>
+            <td>Up Vote</td>
+            <td>Delete!</td>
+            <td>Edit</td>
+        </tr>
+        <tr ng-repeat="game in ac.gamesArray.list">
+            <td>{{game.name}} </td>
+            <td>{{game.published.toString(0,10)}} </td>
+            <td>{{game.rating}} </td>
+            <td>{{game.voteCount}} </td>
+            <td><button ng-click="ac.addVote(game.voteCount, game._id)">Up Vote Game!</button></td> 
+            <td><button ng-click="ac.deleteGame(game._id)">Delete Game!</button> </td>
+            <td><button ng-click="ac.editGame(game._id)">Edit Game</button> </td>
+    </thead>
+</table>
+
+
